@@ -1,4 +1,5 @@
 FROM fithwum/debian-base:bullseye
+LABEL maintainer "fithwum"
 
 # URL's for files
 ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/docker-registry/master/files/Install_Script.sh
@@ -16,7 +17,7 @@ RUN chmod 777 -R /docker-registry /docker-registry-temp \
 	&& chmod +x /docker-registry-temp/Install_Script.sh
 
 # Directory where data is stored
-VOLUME /docker-registry
+VOLUME [ "/docker-registry", "/docker-registry-temp" ]
 
 # Run command
 CMD [ "/bin/bash", "./docker-registry-temp/Install_Script.sh" ]
