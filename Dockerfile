@@ -6,7 +6,7 @@ ARG INSTALL_SCRIPT=https://raw.githubusercontent.com/fithwum/docker-registry/mas
 
 # Install main app and dependencies
 RUN apt-get -y update && apt-get clean \
-	&& apt-get install -y docker-registry \
+	&& apt-get install -y docker-registry gzip tar \
 	&& rm -rf /var/lib/apt/lists/* 
 
 # Make directories and set permissions
